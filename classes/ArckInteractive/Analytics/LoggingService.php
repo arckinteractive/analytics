@@ -6,7 +6,6 @@ use ElggCookie;
 use ElggEntity;
 use ElggRelationship;
 use ElggUser;
-use Faker\Factory;
 use MaxMind\Db\Reader;
 
 class LoggingService {
@@ -376,10 +375,6 @@ class LoggingService {
 	 * @return string
 	 */
 	protected function getIpAddress() {
-
-		$faker = Factory::create('en_US');
-
-		return $faker->ipv4();
 
 		if (getenv('HTTP_CLIENT_IP')) {
 			$ip_address = getenv('HTTP_CLIENT_IP');
