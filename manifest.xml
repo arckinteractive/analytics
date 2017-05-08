@@ -3,7 +3,7 @@
 	<name>Analytics</name>
 	<id>analytics</id>
 	<author>Ismayil Khayredinov</author>
-	<version>1.0.0</version>
+	<version type="dist">1.0.0</version>
 	<description>User and usage statistics and analytics</description>
 	<category>analytics</category>
 	<website>https://arckinteractive.com/</website>
