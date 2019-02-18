@@ -15,6 +15,11 @@ class LoggingService {
 	const EXPIRY = 3600; // 1 hour of inactivity creates a new session
 
 	/**
+	 * @var Session
+	 */
+	protected $session;
+
+	/**
 	 * Log a page view
 	 *
 	 * @param array $data View data
@@ -168,6 +173,10 @@ class LoggingService {
 	 */
 	protected function loadSession() {
 
+		if ($this->session) {
+			return $this->session;
+		}
+
 		$session_id = false;
 
 		$cookie = $_COOKIE[self::SID_COOKIE];
@@ -251,6 +260,8 @@ class LoggingService {
 		$fp_cookie->value = $fingerprint;
 		elgg_set_cookie($fp_cookie);
 
+		$this->session = $session;
+		
 		return $session;
 	}
 
