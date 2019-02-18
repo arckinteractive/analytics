@@ -4,7 +4,7 @@ namespace ArckInteractive\Analytics;
 
 use stdClass;
 
-class PageView {
+class EntityEvent {
 
 	private $session_id;
 	private $page_url;

@@ -261,7 +261,7 @@ class LoggingService {
 		elgg_set_cookie($fp_cookie);
 
 		$this->session = $session;
-		
+
 		return $session;
 	}
 
