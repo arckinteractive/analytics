@@ -8,19 +8,22 @@ module.exports = function (grunt) {
 		// Bump version numbers
 		version: {
 			pkg: {
-				src: ['package.json', 'composer.json'],
+				src: ['package.json', 'composer.json']
 			},
 			manifest: {
 				options: {
 					pkg: grunt.file.readJSON('package.json'),
 					prefix: '\<version type=\"dist\"\>'
 				},
-				src: ['manifest.xml'],
+				src: ['manifest.xml']
 			}
 		},
 		clean: {
 			release: {
 				src: ['build/', 'releases/', 'mod/', 'vendor/', 'composer.lock']
+			},
+			after: {
+				src: ['build/', 'releases/', 'mod/']
 			}
 		},
 		copy: {
@@ -46,7 +49,7 @@ module.exports = function (grunt) {
 				],
 				dest: 'build/',
 				expand: true
-			},
+			}
 		},
 		compress: {
 			release: {
@@ -62,12 +65,12 @@ module.exports = function (grunt) {
 		gitcommit: {
 			release: {
 				options: {
-					message: 'chore(build): release <%= pkg.version %>',
+					message: 'chore(build): release <%= pkg.version %>'
 				},
 				files: {
-					src: ["composer.json", "manifest.xml", "package.json", "CHANGELOG.md"],
+					src: ["composer.json", "manifest.xml", "package.json", "CHANGELOG.md"]
 				}
-			},
+			}
 		},
 		gitfetch: {
 			release: {
@@ -83,8 +86,7 @@ module.exports = function (grunt) {
 			}
 		},
 		gitpush: {
-			release: {
-			},
+			release: {},
 			release_tags: {
 				options: {
 					tags: true
@@ -154,6 +156,7 @@ module.exports = function (grunt) {
 			'copy:release',
 			'compress:release',
 			'gh_release',
+			'clean:after'
 		]);
 	});
 };
